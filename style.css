@@ -1,81 +1,105 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background: #222;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #1e1e1e, #000000 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .card {
-    width: 90%;
-    max-width: 470px;
-    background: linear-gradient(135deg, #00feba, #5b548a);
-    color: #fff;
-    margin: 100px auto 0;
+    background: #121212;
+    padding: 35px 25px;
     border-radius: 20px;
-    padding: 40px 35px;
+    width: 350px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2), 0 0 50px rgba(0, 255, 255, 0.1) inset;
     text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.4), 0 0 70px rgba(0, 255, 255, 0.2) inset;
 }
 
 .search {
-    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .search input {
-    border: 0;
-    outline: 0;
-    background: #ebfffc;
-    color: #555;
-    padding: 10px 25px;
-    height: 60px;
-    border-radius: 30px;
-    flex: 1;
-    margin-right: 16px;
-    font-size: 18px;
+    padding: 12px;
+    width: 70%;
+    border-radius: 10px;
+    border: 2px solid #00f2fe;
+    background: #1e1e1e;
+    color: #fff;
+    outline: none;
+    margin-right: 10px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search input:focus {
+    border-color: #00f2fe;
+    box-shadow: 0 0 15px #00f2fe;
 }
 
 .search button {
-    border: 0;
-    outline: 0;
-    background: #ebfffc;
+    background: #00f2fe;
+    border: none;
+    padding: 12px;
     border-radius: 50%;
-    width: 50px;
-    height: 60px;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00f2fe;
 }
 
 .search button img {
-    width: 16px;
+    width: 20px;
 }
 
-.weather-Icon {
-    width: 170px;
-    margin-top: 30px;
+.weather {
+    display: none;
+    animation: fadeIn 0.8s ease;
+}
+
+.weather img {
+    width: 100px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px #00f2fe);
 }
 
 .weather h1 {
-    font-size: 80px;
-    font-weight: 500;
+    font-size: 48px;
+    color: #00f2fe;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #00f2fe;
 }
 
 .weather h2 {
-    font-size: 45px;
-    font-weight: 500;
-    margin-top: -10px;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .details {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .col {
@@ -85,25 +109,35 @@ body {
 }
 
 .col img {
-    width: 40px;
+    width: 35px;
     margin-right: 10px;
+    filter: drop-shadow(0 0 5px #00f2fe);
 }
 
 .humidity,
 .wind {
-    font-size: 28px;
-    margin-top: -6px;
-}
-
-.weather {
-    display: none;
+    font-size: 18px;
+    color: #00f2fe;
+    font-weight: bold;
 }
 
 .error {
-    text-align: left;
-    margin-left: 10px;
-    font-size: 14px;
+    color: #ff4d4d;
     margin-top: 10px;
-    color: red;
     display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
